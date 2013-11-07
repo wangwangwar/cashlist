@@ -1,0 +1,11 @@
+uwsgi:
+    gid: www-data
+    uid: www-data
+    vhost: true
+    socket: /tmp/uwsgi_vhosts.sock
+    chmod-socket: 666
+    #socket: :8001
+    master: 1
+    workers: 1
+    plugins: python2
+    module: cash
