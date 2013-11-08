@@ -18,7 +18,7 @@ class Index:
             web.form.Textbox('yuan',
                 web.form.regexp(r"\d+", u"必须是数字"),
                 description=u"好多钱？"),
-            web.form.Dropdown('type', 
+            web.form.Dropdown('type',
                 [u'收入', u'支出'], value=u'支出'),
             web.form.Button("add", html=u'添加'),
             )

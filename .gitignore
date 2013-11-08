@@ -2,3 +2,4 @@
 sass/.sass-cache/*
 *.swp
 *.sqlite
+.ropeproject
