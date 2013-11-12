@@ -5,11 +5,18 @@
 
 @import "compass/reset";
 
+
+
+/* ===========================
+======= Body style ========
+=========================== */
+
 body {
-    margin: 40px;
+    padding: 50px 100px;
     text-align: center;
+    font-size: 13px;
+    font-style: Verdana, Tahoma, sans-serif;
     div {
-        border: 1px dotted black;
         margin: 0 auto;
         width: 50%;
     }
@@ -20,4 +27,69 @@ h1 {
     color: red;
 }
 
+h2 {
+    margin-bottom: 20px;
+    color: #474E69;
+}
+
+
+/* ===========================
+====== Table List =======
+=========================== */
+th {
+    width: 200px;
+}
+
+
+/* ===========================
+====== Contact Form =======
+=========================== */
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #E5E5E5;
+    width: 200px;
+    color: #999999;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+}
+
+
+textarea {
+    width: 400px;
+    height: 150px;
+    max-width: 400px;
+    line-height: 18px;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+    border-color: 1px solid #C9C9C9;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+}
+
+#delete {
+    width: 50px;
+}
+
+.form label {
+    margin-left: 10px; color: #999999;
+}
+
+/* ===========================
+====== Submit Button ======
+=========================== */
+
+.submit input {
+    width: 100px;
+    height: 40px;
+    background-color: #474E69;
+    color: #FFF;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
 

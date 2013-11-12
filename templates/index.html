@@ -3,10 +3,7 @@ $def with (cash, form)
 <div>
 
 <table>
-    <tr>
-        <th>$u"明细"</th>
-        <th></th>
-    </tr>
+    <h2>明细</h2>
 
     <tr>
         <th>$u"时间"</th>
@@ -23,14 +20,29 @@ $for item in cash:
         <td>$item.yuan</td>
         <td>
             <form action="/del/$item.id" method="post">
-                <input type="submit" value="删除"/>
+                <input type="submit" id="delete" value="删除"/>
             </form>
         </td>
     </tr>
 </table>
 
-<form action="" method="post">
-    $:form.render()
+<form action="" method="post" class="form">
+    <p class="title"> 
+        $:form.title.render()
+        <label for="title">干什么</label>
+    </p>
+    <p class="yuan">
+        $:form.yuan.render()
+        <label for="yuan">好多钱</label>
+    </p>
+    <p class="type">
+        $:form.type.render()
+        <label for="type">类型</label>
+    </p>
+    <p class="submit">
+        <input type="submit" id="add" value="添加"/>
+    </p>
+
 </form>
 
 <div>
