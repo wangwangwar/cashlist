@@ -1,48 +1,65 @@
 $def with (cash, form)
 
-<div>
+<svg class="chart"></svg>
+<script src="/static/js/d3.min.js"></script>
+<script>
+    /* acounts data */
+    var data = [
+    $for item in cash:
+        {date: "$item.date", yuan: $item.yuan},
+        $pass
+    ];
 
-<table>
-    <h2>明细</h2>
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
-    <tr>
-        <th>$u"时间"</th>
-        <th>$u"类型"</th>
-        <th>$u"项目"</th>
-        <th>$u"数目"</th>
-    </tr>
+    var formatPercent = d3.format(".0%");
 
-$for item in cash:
-    <tr>
-        <td>$item.date</td>
-        <td>$item.type</td>
-        <td>$item.title</td>
-        <td>$item.yuan</td>
-        <td>
-            <form action="/del/$item.id" method="post">
-                <input type="submit" id="delete" value="删除"/>
-            </form>
-        </td>
-    </tr>
-</table>
+    var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1)
+    .domain(data.map(function(d) { return d["date"];}));
 
-<form action="" method="post" class="form">
-    <p class="title"> 
-        $:form.title.render()
-        <label for="title">干什么</label>
-    </p>
-    <p class="yuan">
-        $:form.yuan.render()
-        <label for="yuan">好多钱</label>
-    </p>
-    <p class="type">
-        $:form.type.render()
-        <label for="type">类型</label>
-    </p>
-    <p class="submit">
-        <input type="submit" id="add" value="添加"/>
-    </p>
+    var y = d3.scale.linear()
+    .range([height, 0])
+    .domain([0, d3.max(data, function(d) { return d["yuan"]; })]);
 
-</form>
+    var xAxis = d3.svg.axis()
+.scale(x)
+    .orient("bottom");
 
-<div>
+    var yAxis = d3.svg.axis()
+.scale(y)
+    .orient("left");
+
+    var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+            svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Yuan");
+
+    svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d["date"]); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d["yuan"]); })
+            .attr("height", function(d) { return height - y(d["yuan"]); });
+
+</script>

@@ -93,3 +93,19 @@ input:focus, textarea:focus {
     -webkit-border-radius: 3px;
 }
 
+
+/* chart */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}

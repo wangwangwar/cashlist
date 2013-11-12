@@ -1,0 +1,26 @@
+$def with (cash)
+<div>
+    <table>
+        <h2>明细</h2>
+
+        <tr>
+            <th>$u"时间"</th>
+            <th>$u"类型"</th>
+            <th>$u"项目"</th>
+            <th>$u"数目"</th>
+        </tr>
+
+        $for item in cash:
+        <tr>
+            <td>$item.date</td>
+            <td>$item.type</td>
+            <td>$item.title</td>
+            <td>$item.yuan</td>
+            <td>
+                <form action="/del/$item.id" method="post">
+                    <input type="submit" id="delete" value="删除"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <div>

@@ -1,0 +1,22 @@
+$def with (form)
+<div>
+    <form action="/add" method="post" class="form">
+        <p class="title"> 
+            $:form.title.render()
+            <label for="title">干什么</label>
+        </p>
+        <p class="yuan">
+            $:form.yuan.render()
+            <label for="yuan">好多钱</label>
+        </p>
+        <p class="type">
+            $:form.type.render()
+            <label for="type">类型</label>
+        </p>
+        <p class="submit">
+            <input type="submit" id="add" value="添加"/>
+        </p>
+
+    </form>
+
+    <div>
