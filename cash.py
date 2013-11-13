@@ -24,29 +24,15 @@ class Index:
 
 
 class Add:
-    form = web.form.Form(
-        web.form.Textbox('title', web.form.notnull,
-                         description=u"项目", placeholder=u"午餐"),
-        web.form.Textbox('yuan',
-                         web.form.regexp(r"\d+", u"必须是数字"),
-                         description=u"好多钱？", placeholder=u"10"),
-        web.form.Dropdown('type',
-                          [u'收入', u'支出'], value=u'支出',
-                          description=u"类型"),
-        web.form.Textbox("submit", html=u'添加'),
-    )
 
     def GET(self):
         """Show add page."""
-        return render.add(self.form)
+        return render.add()
 
     def POST(self):
-        """Add new entry"""
-        form = self.form()
-        if not form.validates():
-            cash = model.get_cash_details()
-            return render.index(cash, form)
-        model.new_item(form.d.title, form.d.yuan, form.d.type)
+        """Add new entry."""
+        post = web.input()
+        model.new_item(post.title, post.yuan, post.type)
         raise web.seeother('/')
 
 

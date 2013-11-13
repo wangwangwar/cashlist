@@ -1,22 +1,21 @@
-$def with (form)
-<div>
-    <form action="/add" method="post" class="form">
-        <p class="title"> 
-            $:form.title.render()
-            <label for="title">干什么</label>
-        </p>
-        <p class="yuan">
-            $:form.yuan.render()
-            <label for="yuan">好多钱</label>
-        </p>
-        <p class="type">
-            $:form.type.render()
-            <label for="type">类型</label>
-        </p>
-        <p class="submit">
-            <input type="submit" id="add" value="添加"/>
-        </p>
-
+<div class="container">
+    <form action="/add" method="post" role="form" class="form-inline">
+        <div class="form-group"> 
+            <label for="title" class="sr-only">干什么</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="午餐">
+        </div>
+        <div class="form-group"> 
+            <label for="yuan" class="sr-only">好多钱</label>
+            <input type="number" class="form-control" name="yuan" id="yuan" placeholder="4.8">
+        </div>
+        <div class="form-group"> 
+            <label for="type" class="sr-only">类型</label>
+            <select class="form-control" name="type" id="type">
+                <option value="支出">支出</option>
+                <option value="收入">收入</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-default">
     </form>
 
-    <div>
+</div>
