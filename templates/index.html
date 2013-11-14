@@ -1,9 +1,26 @@
 $def with (cash)
 
+
+<nav>
+    <ul class="nav nav-pills">
+        <li><a href="/add"><i class="fa fa-plus fa-fw"></i>添加</a></li>
+        <li><a href="/add"><i class="fa fa-bars fa-fw"></i>管理</a></li>
+    </div>
+</nav>
+
+<article>
+    <section class="chart">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" id="chart">
+            </div>
+        </div>
+    </section>
+</article>
+
 <script src="/static/js/d3.min.js"></script>
 <script>
-    /* data filled by py, used by accounts-chart.js */
-    var data = [
+/* data filled by py, used by accounts-chart.js */
+var data = [
     $for item in cash:
         {date: "$item.date", yuan: $item.yuan},
         $pass

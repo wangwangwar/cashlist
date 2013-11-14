@@ -1,26 +1,36 @@
 $def with (cash)
-<div class="container">
-    <table class="table">
-        <h2>明细</h2>
 
-        <tr>
-            <th>$u"时间"</th>
-            <th>$u"类型"</th>
-            <th>$u"项目"</th>
-            <th>$u"数目"</th>
-        </tr>
 
-        $for item in cash:
-        <tr>
-            <td>$item.date</td>
-            <td>$item.type</td>
-            <td>$item.title</td>
-            <td>$item.yuan</td>
-            <td>
-                <form action="/del/$item.id" method="post">
-                    <input type="submit" id="delete" value="删除"/>
-                </form>
-            </td>
-        </tr>
-    </table>
-</div>
+<nav>
+    <ul class="nav nav-pills">
+        <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    </ul>
+</nav>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <tr>
+                    <th>$u"时间"</th>
+                    <th>$u"类型"</th>
+                    <th>$u"项目"</th>
+                    <th>$u"数目"</th>
+                </tr>
+
+                $for item in cash:
+                <tr>
+                    <td>$item.date</td>
+                    <td>$item.type</td>
+                    <td>$item.title</td>
+                    <td>$item.yuan</td>
+                    <td>
+                        <form action="/del/$item.id" method="post">
+                            <input type="submit" id="delete" value="删除"/>
+                        </form>
+                    </td>
+                </tr>
+                    $pass
+            </table>
+        </div>
+    </section>
