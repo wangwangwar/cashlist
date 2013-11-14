@@ -1,6 +1,5 @@
 # coding: utf-8
 import web
-import datetime
 
 db = web.database(dbn='sqlite', db='cash.sqlite')
 
@@ -8,8 +7,8 @@ def get_cash_details():
     return db.select('cash', order='id')
 
 
-def new_item(text, cash, type):
-    q = db.insert('cash', title=text, yuan=cash, type=type, date=datetime.date.today())
+def new_item(date, item, yuan, type):
+    q = db.insert('cash', date=date, title=item, yuan=yuan, type=type)
 
 
 def del_item(id):

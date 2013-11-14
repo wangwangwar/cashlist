@@ -1,8 +1,14 @@
+$def with (today)
+
 <div class="container">
     <form action="/add" method="post" role="form" class="form-inline">
+        <div class="form-group">
+            <label for="date" class="sr-only"></label>
+            <input type="date" name="date" value="$today">
+        </div>
         <div class="form-group"> 
-            <label for="title" class="sr-only">干什么</label>
-            <input type="text" name="title" class="form-control" id="title" placeholder="午餐">
+            <label for="item" class="sr-only">干什么</label>
+            <input type="text" name="item" class="form-control" id="item" placeholder="午餐">
         </div>
         <div class="form-group"> 
             <label for="yuan" class="sr-only">好多钱</label>
